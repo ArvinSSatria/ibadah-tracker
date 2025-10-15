@@ -1,61 +1,125 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Ibadah Tracker - Aplikasi Web Pelacak Ibadah Harian
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web sederhana namun kuat yang dirancang untuk membantu umat Muslim dalam mencatat, mengelola, dan memantau perkembangan ibadah harian mereka. Proyek ini dibangun dengan tujuan menjadi sahabat digital yang memotivasi pengguna untuk lebih konsisten (istiqomah) dalam beribadah.
 
-## About Laravel
+![Screenshot Ibadah Tracker](https://user-images.githubusercontent.com/username/repo/screenshot.png)
+_Catatan: Ganti URL di atas dengan screenshot aplikasi Anda yang sebenarnya._
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🕌 Deskripsi Proyek
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Ibadah Tracker adalah platform yang ramah pengguna (user-friendly) dan berfokus pada privasi. Pengguna dapat dengan mudah mencatat berbagai macam ibadah harian, mulai dari shalat wajib hingga ibadah sunnah yang dapat mereka personalisasi sendiri. Dengan halaman riwayat yang terstruktur, pengguna dapat melihat kembali progres mereka dari waktu ke waktu, membantu mereka untuk melakukan evaluasi diri dan meningkatkan kualitas ibadah.
 
-## Learning Laravel
+## ✨ Fitur Utama
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   **🔐 Autentikasi Pengguna:** Sistem pendaftaran (Sign Up) dan masuk (Login) yang aman.
+-   **🌙 Mode Terang & Gelap:** Tampilan yang dapat disesuaikan untuk kenyamanan mata.
+-   **📱 Desain Responsif:** Tampilan yang optimal baik di desktop maupun perangkat mobile.
+-   **📊 Dasbor Harian:**
+    -   Ringkasan progres ibadah hari ini.
+    -   Checklist interaktif untuk menandai ibadah yang telah selesai.
+-   **📝 Pelacakan Ibadah:**
+    -   **Shalat Wajib:** Checklist untuk 5 waktu shalat.
+    -   **Tilawah Al-Qur'an:** Input untuk mencatat jumlah halaman yang dibaca setiap hari.
+    -   **Ibadah Custom:** Fitur untuk menambah, melacak, dan mengelola ibadah atau kebiasaan baik lainnya sesuai keinginan pengguna (misalnya: Shalat Dhuha, Zikir Pagi, Puasa Senin-Kamis).
+-   **📜 Halaman Riwayat & Progres:**
+    -   Menampilkan ringkasan data ibadah yang dikelompokkan berdasarkan tanggal.
+    -   Memudahkan pengguna untuk melihat konsistensi ibadah dari hari ke hari.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🛠️ Teknologi yang Digunakan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Proyek ini dibangun dengan TALL Stack modern yang dimodifikasi:
 
-## Laravel Sponsors
+-   **Backend:** [Laravel 10](https://laravel.com/)
+-   **Frontend:**
+    -   [Tailwind CSS](https://tailwindcss.com/)
+    -   [Alpine.js](https://alpinejs.dev/)
+    -   [Vite](https://vitejs.dev/)
+-   **Database:** [SQLite](https://www.sqlite.org/index.html) (untuk kemudahan portabilitas dan pengembangan lokal)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚀 Panduan Instalasi Lokal
 
-### Premium Partners
+Untuk menjalankan proyek ini di lingkungan lokal Anda, ikuti langkah-langkah berikut.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Prasyarat
 
-## Contributing
+Pastikan Anda telah menginstal perangkat lunak berikut di komputer Anda:
+-   PHP >= 8.1
+-   Composer
+-   Node.js & NPM
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Langkah-langkah Instalasi
 
-## Code of Conduct
+1.  **Clone repositori ini:**
+    ```sh
+    git clone https://github.com/username/ibadah-tracker.git
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2.  **Masuk ke direktori proyek:**
+    ```sh
+    cd ibadah-tracker
+    ```
 
-## Security Vulnerabilities
+3.  **Instal dependensi PHP:**
+    ```sh
+    composer install
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4.  **Instal dependensi Node.js:**
+    ```sh
+    npm install
+    ```
 
-## License
+5.  **Salin file environment:**
+    ```sh
+    cp .env.example .env
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+6.  **Generate kunci aplikasi Laravel:**
+    ```sh
+    php artisan key:generate
+    ```
+
+7.  **Konfigurasi Database (SQLite):**
+    -   Buat sebuah file kosong di dalam direktori `database/` dengan nama `database.sqlite`.
+    -   Buka file `.env` dan pastikan konfigurasi database Anda terlihat seperti ini:
+      ```env
+      DB_CONNECTION=sqlite
+      DB_DATABASE=/path/to/your/project/ibadah-tracker/database/database.sqlite
+      ```
+      _Ganti `/path/to/your/project/` dengan path absolut ke direktori proyek Anda._
+
+8.  **Jalankan migrasi database:**
+    Perintah ini akan membuat semua tabel yang dibutuhkan di dalam file `database.sqlite`.
+    ```sh
+    php artisan migrate
+    ```
+
+9.  **Jalankan server pengembangan:**
+    -   Di terminal pertama, jalankan server Laravel:
+      ```sh
+      php artisan serve
+      ```
+    -   Di terminal kedua, jalankan Vite untuk kompilasi aset frontend:
+      ```sh
+      npm run dev
+      ```
+
+10. **Selesai!** Buka `http://127.0.0.1:8000` di browser Anda.
+
+## 🗺️ Rencana Pengembangan (Roadmap)
+
+Berikut adalah beberapa fitur yang direncanakan untuk pengembangan di masa depan:
+
+-   [ ] **Gamifikasi:** Sistem poin, lencana (badges), dan level untuk meningkatkan motivasi.
+-   [ ] **Pelacak Zikir:** Fitur "tasbih digital" untuk menghitung zikir harian.
+-   [ ] **Detail Shalat:** Opsi untuk mencatat shalat "Tepat Waktu" dan "Berjamaah".
+-   [ ] **Visualisasi Data:** Grafik dan bagan di halaman riwayat untuk melihat tren.
+-   [ ] **Tantangan (Challenges):** Membuat tantangan ibadah yang bisa diikuti pengguna.
+
+## 📄 Lisensi
+
+Didistribusikan di bawah Lisensi MIT. Lihat `LICENSE.txt` untuk informasi lebih lanjut.
+
+---
