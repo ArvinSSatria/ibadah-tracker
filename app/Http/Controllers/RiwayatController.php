@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\ShalatLog;
 use Illuminate\Http\Request;
-use App\Models\IbadahLainLog;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,36 +13,34 @@ class RiwayatController extends Controller
     {
         $user_id = Auth::id();
 
-        // --- PERBAIKAN: Paksa kunci grouping menjadi string ---
-        // 1. Ambil semua log shalat
+        // Ambil data ShalatLog (sudah detail, tidak perlu diubah)
         $shalatLogsByDate = ShalatLog::where('user_id', $user_id)
             ->orderBy('tanggal', 'desc')
             ->get()
-            // Gunakan callback untuk memastikan kunci grup adalah string 'YYYY-MM-DD'
             ->groupBy(function ($log) {
                 return $log->tanggal->toDateString();
             });
 
-        $ibadahLainLogsByDate = IbadahLainLog::where('user_id', $user_id)
-            ->where('dilaksanakan', true) // Hanya ambil yang sudah dicentang
+        // Ambil data IbadahLainLog (tidak perlu diubah, sudah mengirim semua data)
+        // Kita akan memprosesnya nanti di view
+        $ibadahLainLogsByDate = DB::table('ibadah_lain_logs')
+            ->where('user_id', $user_id)
+            ->where('dilaksanakan', true)
             ->get()
-            ->groupBy(function ($log) {
-                return $log->tanggal->toDateString();
-            });
+            ->groupBy('tanggal');
 
-        // 2. Ambil semua log tilawah menggunakan Query Builder (kuncinya sudah pasti string)
+        // Ambil data TilawahLog (sudah detail, tidak perlu diubah)
         $tilawahLogsByDate = DB::table('tilawah_logs')->where('user_id', $user_id)
             ->get()
             ->keyBy('tanggal');
 
-        // 3. Sekarang, kedua sumber data memiliki kunci string, jadi penggabungan akan berhasil.
+        // Gabungkan semua tanggal unik
         $allDates = collect($shalatLogsByDate->keys())
             ->merge($tilawahLogsByDate->keys())
             ->merge($ibadahLainLogsByDate->keys())
             ->unique()
             ->sortDesc();
 
-        // 4. Kirim semua data yang sudah terorganisir ke view
         return view('riwayat.index', [
             'allDates' => $allDates,
             'shalatLogsByDate' => $shalatLogsByDate,
