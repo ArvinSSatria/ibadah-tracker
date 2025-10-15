@@ -2,11 +2,6 @@
 
 Aplikasi web sederhana namun kuat yang dirancang untuk membantu umat Muslim dalam mencatat, mengelola, dan memantau perkembangan ibadah harian mereka. Proyek ini dibangun dengan tujuan menjadi sahabat digital yang memotivasi pengguna untuk lebih konsisten (istiqomah) dalam beribadah.
 
-![Screenshot Ibadah Tracker](https://user-images.githubusercontent.com/username/repo/screenshot.png)
-_Catatan: Ganti URL di atas dengan screenshot aplikasi Anda yang sebenarnya._
-
----
-
 ## 🕌 Deskripsi Proyek
 
 Ibadah Tracker adalah platform yang ramah pengguna (user-friendly) dan berfokus pada privasi. Pengguna dapat dengan mudah mencatat berbagai macam ibadah harian, mulai dari shalat wajib hingga ibadah sunnah yang dapat mereka personalisasi sendiri. Dengan halaman riwayat yang terstruktur, pengguna dapat melihat kembali progres mereka dari waktu ke waktu, membantu mereka untuk melakukan evaluasi diri dan meningkatkan kualitas ibadah.
