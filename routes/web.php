@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
 
     // Rute untuk halaman Riwayat
     Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
+
+    // routes/web.php
+    Route::patch('/shalat-log/detail/{shalatLog}', [ShalatLogController::class, 'updateDetails'])->name('shalat-log.details.update');
 });
 
 require __DIR__ . '/auth.php';

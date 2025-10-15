@@ -21,6 +21,7 @@ class ShalatLog extends Model
         'dilaksanakan',
         'status',
         'berjamaah',
+        'tepat_waktu',
     ];
     
     protected $casts = [

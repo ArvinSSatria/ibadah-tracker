@@ -45,37 +45,72 @@
                     @endif
 
                     <div class="mt-4 space-y-3">
+                        {{-- Ganti @foreach yang lama dengan kode di bawah ini --}}
+
                         @foreach ($shalatLogs as $waktu => $log)
-                            <form action="{{ route('shalat-log.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="shalat" value="{{ $waktu }}">
-                                <input type="hidden" name="tanggal" value="{{ $today }}">
-                                <button type="submit"
-                                    class="w-full text-left p-4 rounded-lg transition-colors duration-200 {{ $log->dilaksanakan ? 'bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-300' : 'bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700' }}">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-lg capitalize font-semibold">{{ $waktu }}</span>
-                                        <div class="flex items-center">
-                                            @if ($log->dilaksanakan)
-                                                <span class="text-sm mr-3 font-medium">Selesai</span>
+                            <div
+                                class="bg-gray-50 dark:bg-gray-700/50 rounded-lg transition-colors duration-200 {{ $log->dilaksanakan ? 'ring-2 ring-green-500' : '' }}">
+                                {{-- Tombol Utama untuk Menandai Selesai/Batal --}}
+                                <form action="{{ route('shalat-log.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="shalat" value="{{ $waktu }}">
+                                    <input type="hidden" name="tanggal" value="{{ $today }}">
+                                    <button type="submit"
+                                        class="w-full text-left p-4 rounded-t-lg {{ $log->dilaksanakan ? 'bg-green-100 dark:bg-green-800/30' : '' }}">
+                                        <div class="flex items-center justify-between">
+                                            <span
+                                                class="text-lg capitalize font-semibold text-gray-800 dark:text-gray-200">{{ $waktu }}</span>
+                                            <div class="flex items-center">
+                                                <span
+                                                    class="text-sm mr-3 font-medium {{ $log->dilaksanakan ? 'text-green-800 dark:text-green-300' : 'text-gray-500 dark:text-gray-400' }}">{{ $log->dilaksanakan ? 'Selesai' : 'Belum' }}</span>
                                                 <div
-                                                    class="w-6 h-6 flex items-center justify-center rounded-full bg-green-500 text-white">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                        fill="currentColor" class="w-4 h-4">
-                                                        <path fill-rule="evenodd"
-                                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z"
-                                                            clip-rule="evenodd" />
-                                                    </svg>
+                                                    class="w-6 h-6 flex items-center justify-center rounded-full {{ $log->dilaksanakan ? 'bg-green-500 text-white' : 'border-2 border-gray-300 dark:border-gray-500' }}">
+                                                    @if ($log->dilaksanakan)
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                            fill="currentColor" class="w-4 h-4">
+                                                            <path fill-rule="evenodd"
+                                                                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                    @endif
                                                 </div>
-                                            @else
-                                                <span class="text-sm mr-3 text-gray-500 dark:text-gray-400">Belum</span>
-                                                <div
-                                                    class="w-6 h-6 border-2 border-gray-300 dark:border-gray-500 rounded-full">
-                                                </div>
-                                            @endif
+                                            </div>
                                         </div>
+                                    </button>
+                                </form>
+
+                                {{-- Opsi Detail (Hanya Muncul Jika Sudah Selesai) --}}
+                                @if ($log->dilaksanakan)
+                                    <div class="p-4 border-t border-gray-200 dark:border-gray-600">
+                                        <form action="{{ route('shalat-log.details.update', $log->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('PATCH')
+                                            <div class="flex items-center justify-end space-x-6">
+                                                {{-- Checkbox Berjamaah --}}
+                                                <label class="flex items-center space-x-2 cursor-pointer">
+                                                    <input type="checkbox" name="berjamaah" value="1"
+                                                        @if ($log->berjamaah) checked @endif
+                                                        onchange="this.form.submit()"
+                                                        class="rounded border-gray-300 dark:border-gray-500 text-primary-600 shadow-sm focus:ring-primary-500 dark:bg-gray-900 dark:checked:bg-primary-600">
+                                                    <span
+                                                        class="text-sm font-medium text-gray-700 dark:text-gray-300">Berjamaah</span>
+                                                </label>
+                                                {{-- Checkbox Tepat Waktu --}}
+                                                <label class="flex items-center space-x-2 cursor-pointer">
+                                                    <input type="checkbox" name="tepat_waktu" value="1"
+                                                        @if ($log->tepat_waktu) checked @endif
+                                                        onchange="this.form.submit()"
+                                                        class="rounded border-gray-300 dark:border-gray-500 text-primary-600 shadow-sm focus:ring-primary-500 dark:bg-gray-900 dark:checked:bg-primary-600">
+                                                    <span
+                                                        class="text-sm font-medium text-gray-700 dark:text-gray-300">Tepat
+                                                        Waktu</span>
+                                                </label>
+                                            </div>
+                                        </form>
                                     </div>
-                                </button>
-                            </form>
+                                @endif
+                            </div>
                         @endforeach
                     </div>
                 </div>
